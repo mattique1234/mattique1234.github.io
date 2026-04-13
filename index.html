@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Attique Awan | Mobile App Developer</title>
+    <meta name="description" content="Portfolio of M Attique Awan - Flutter & Mobile App Developer specializing in fintech and remittance solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --surface: #141416;
+            --surface-2: #1c1c1f;
+            --border: #2a2a2e;
+            --text: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --green: #22c55e;
+            --orange: #f97316;
+            --cyan: #06b6d4;
+            --pink: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            background: var(--surface);
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .filter-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .description {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.625rem;
+            background: var(--surface-2);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-type {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .project-type .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Featured Project */
+        .featured-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+
+        .featured-card .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 100px;
+            font-size: 0.7rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .featured-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .featured-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .featured-highlights li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .featured-highlights li svg {
+            flex-shrink: 0;
+            color: var(--green);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+        }
+
+        .skill-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .skill-item {
+            padding: 0.25rem 0.625rem;
+            background: var(--surface-2);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--surface);
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .contact-link.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .contact-link.primary:hover {
+            background: var(--accent-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-number { font-size: 1.5rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .featured-card { grid-template-columns: 1fr; }
+            section { padding: 3rem 1rem; }
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">MA</div>
+    <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'" aria-label="Toggle menu">&#9776;</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Available for opportunities
+        </div>
+        <h1>Hi, I'm <span class="gradient">Attique Awan</span></h1>
+        <p>Mobile App Developer at Soft Tech Media, specializing in Flutter and cross-platform fintech solutions. I build secure, scalable remittance and financial applications used across multiple countries.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Fintech Apps</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <div class="section-header fade-up">
+        <h2>Projects</h2>
+        <p>A selection of products I've built and shipped</p>
+    </div>
+
+    <div class="filter-tabs fade-up">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="fintech">Fintech</button>
+        <button class="filter-tab" data-filter="communication">Communication</button>
+        <button class="filter-tab" data-filter="web">Web Apps</button>
+        <button class="filter-tab" data-filter="other">Other</button>
+    </div>
+
+    <div class="projects-grid">
+
+        <!-- Featured: KhataFlow -->
+        <div class="project-card featured-card fade-up" data-category="fintech">
+            <div>
+                <div class="featured-badge">Featured Project</div>
+                <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                    <span>&#128218;</span>
+                </div>
+                <h3>KhataFlow</h3>
+                <p class="description">Offline-first business management and ledger application. Enables small business owners to track transactions, generate invoices, and manage their books without internet connectivity.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Riverpod</span>
+                    <span class="tech-tag">Isar DB</span>
+                    <span class="tech-tag">PDF Generation</span>
+                    <span class="tech-tag">Biometric Auth</span>
+                </div>
+            </div>
+            <div>
+                <ul class="featured-highlights">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Offline-first with Isar local database
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Biometric authentication &amp; app lock
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        PDF invoice generation &amp; sharing
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Local push notifications for reminders
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Riverpod state management
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Chat Bridge -->
+        <div class="project-card fade-up" data-category="communication">
+            <div class="project-icon" style="background: rgba(6,182,212,0.15);">
+                <span>&#128172;</span>
+            </div>
+            <h3>Chat Bridge</h3>
+            <p class="description">Real-time messaging platform with voice/video calling via WebRTC, live speech-to-text transcription, and multi-language translation.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">WebRTC</span>
+                <span class="tech-tag">Speech-to-Text</span>
+                <span class="tech-tag">Translation API</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--cyan)"></span> Communication</span>
+            </div>
+        </div>
+
+        <!-- Oro Remit -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(249,115,22,0.15);">
+                <span>&#128176;</span>
+            </div>
+            <h3>Oro Remit</h3>
+            <p class="description">Full-featured international remittance platform with BLoC architecture, secure transactions, KYC verification, and real-time exchange rates.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Dio</span>
+                <span class="tech-tag">Hive</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--orange)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- HelloMe Money -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(236,72,153,0.15);">
+                <span>&#127974;</span>
+            </div>
+            <h3>HelloMe Money</h3>
+            <p class="description">Personal and business banking app with Plaid integration for bank linking, story-view onboarding, and comprehensive account management.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Plaid SDK</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Story View</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--pink)"></span> Banking</span>
+            </div>
+        </div>
+
+        <!-- Supersonicz -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(99,102,241,0.15);">
+                <span>&#9889;</span>
+            </div>
+            <h3>Supersonicz</h3>
+            <p class="description">Advanced money transfer platform with Riverpod state management, Volume SDK payment integration, and identity verification workflows.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Riverpod</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Volume SDK</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Remit Union -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                <span>&#127758;</span>
+            </div>
+            <h3>Remit Union</h3>
+            <p class="description">Advanced remittance platform with Onfido SDK for identity verification, contact sync for beneficiary management, and story-view feature.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Onfido SDK</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Hive</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--green)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Top Connect -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(249,115,22,0.15);">
+                <span>&#128279;</span>
+            </div>
+            <h3>Top Connect</h3>
+            <p class="description">Money transfer app with Idensic identity verification SDK, Google/Apple Pay integration, and Volume SDK for payment processing.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Idensic SDK</span>
+                <span class="tech-tag">Apple Pay</span>
+                <span class="tech-tag">Google Pay</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--orange)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Wiremit -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(6,182,212,0.15);">
+                <span>&#128200;</span>
+            </div>
+            <h3>Wiremit</h3>
+            <p class="description">Remittance platform with Idenfy SDK for compliance, Syncfusion charts for analytics dashboards, and comprehensive transfer flows.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Idenfy SDK</span>
+                <span class="tech-tag">Syncfusion Charts</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--cyan)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- JForex -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(236,72,153,0.15);">
+                <span>&#128177;</span>
+            </div>
+            <h3>JForex</h3>
+            <p class="description">Forex money transfer application with identity verification, Google Places autocomplete for addresses, and multi-currency exchange.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Idenfy SDK</span>
+                <span class="tech-tag">Google Places</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--pink)"></span> Forex</span>
+            </div>
+        </div>
+
+        <!-- Worthing FX -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(99,102,241,0.15);">
+                <span>&#128178;</span>
+            </div>
+            <h3>Worthing FX</h3>
+            <p class="description">Currency exchange platform with geolocation-based services, phone number validation, and real-time forex rates.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">GetX</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Geolocator</span>
+                <span class="tech-tag">Hive</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Forex</span>
+            </div>
+        </div>
+
+        <!-- AIU Connect -->
+        <div class="project-card fade-up" data-category="communication">
+            <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                <span>&#127891;</span>
+            </div>
+            <h3>AIU Connect</h3>
+            <p class="description">University campus app with Google SSO, liquid swipe onboarding, chat features, and student identity verification.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Google Sign-In</span>
+                <span class="tech-tag">Liquid Swipe</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--green)"></span> Education</span>
+            </div>
+        </div>
+
+        <!-- AIU Mobile Campus -->
+        <div class="project-card fade-up" data-category="other">
+            <div class="project-icon" style="background: rgba(249,115,22,0.15);">
+                <span>&#128187;</span>
+            </div>
+            <h3>AIU Mobile Campus</h3>
+            <p class="description">Multi-feature university platform with video streaming, YouTube integration, webview content, and campus resource management.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">GetX</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Video Player</span>
+                <span class="tech-tag">YouTube API</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--orange)"></span> Education</span>
+            </div>
+        </div>
+
+        <!-- WebRTC DM -->
+        <div class="project-card fade-up" data-category="communication">
+            <div class="project-icon" style="background: rgba(6,182,212,0.15);">
+                <span>&#128249;</span>
+            </div>
+            <h3>WebRTC Direct Messaging</h3>
+            <p class="description">Peer-to-peer video calling and direct messaging application built with WebRTC and Firebase signaling.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">WebRTC</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--cyan)"></span> Communication</span>
+            </div>
+        </div>
+
+        <!-- News App -->
+        <div class="project-card fade-up" data-category="web">
+            <div class="project-icon" style="background: rgba(236,72,153,0.15);">
+                <span>&#128240;</span>
+            </div>
+            <h3>News App</h3>
+            <p class="description">React-based news aggregator with infinite scroll, loading indicators, and Express.js backend for API proxying.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">REST API</span>
+                <span class="tech-tag">Infinite Scroll</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--pink)"></span> Web App</span>
+            </div>
+        </div>
+
+        <!-- iNotebook -->
+        <div class="project-card fade-up" data-category="web">
+            <div class="project-icon" style="background: rgba(99,102,241,0.15);">
+                <span>&#128221;</span>
+            </div>
+            <h3>iNotebook</h3>
+            <p class="description">Full-stack note-taking web application with React frontend, Node.js backend, and React Router for navigation.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">React Router</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Web App</span>
+            </div>
+        </div>
+
+        <!-- BanglaRemit -->
+        <div class="project-card fade-up" data-category="fintech">
+            <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                <span>&#128241;</span>
+            </div>
+            <h3>BanglaRemit</h3>
+            <p class="description">Native Android remittance application for Bangladesh corridor money transfers, built with native Android SDK.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Android</span>
+                <span class="tech-tag">Java/Kotlin</span>
+                <span class="tech-tag">Gradle</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--green)"></span> Fintech</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="section-header fade-up">
+        <h2>Technical Skills</h2>
+        <p>Technologies and tools I work with</p>
+    </div>
+    <div class="skills-grid fade-up">
+        <div class="skill-card">
+            <h4>&#128241; Mobile Development</h4>
+            <div class="skill-items">
+                <span class="skill-item">Flutter</span>
+                <span class="skill-item">Dart</span>
+                <span class="skill-item">Android (Kotlin/Java)</span>
+                <span class="skill-item">Swift UI</span>
+                <span class="skill-item">iOS</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4>&#9889; State Management</h4>
+            <div class="skill-items">
+                <span class="skill-item">BLoC</span>
+                <span class="skill-item">Riverpod</span>
+                <span class="skill-item">GetX</span>
+                <span class="skill-item">Provider</span>
+                <span class="skill-item">Redux</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4>&#128293; Backend & Cloud</h4>
+            <div class="skill-items">
+                <span class="skill-item">Firebase</span>
+                <span class="skill-item">Node.js</span>
+                <span class="skill-item">REST APIs</span>
+                <span class="skill-item">Dio</span>
+                <span class="skill-item">Express.js</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4>&#128274; Fintech & Compliance</h4>
+            <div class="skill-items">
+                <span class="skill-item">KYC (Onfido, Idenfy, Idensic)</span>
+                <span class="skill-item">Apple Pay / Google Pay</span>
+                <span class="skill-item">Plaid SDK</span>
+                <span class="skill-item">Volume SDK</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4>&#128190; Storage & DB</h4>
+            <div class="skill-items">
+                <span class="skill-item">Hive</span>
+                <span class="skill-item">Isar</span>
+                <span class="skill-item">Firestore</span>
+                <span class="skill-item">SharedPreferences</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4>&#127760; Web & Other</h4>
+            <div class="skill-items">
+                <span class="skill-item">React</span>
+                <span class="skill-item">Next.js</span>
+                <span class="skill-item">WebRTC</span>
+                <span class="skill-item">Git</span>
+                <span class="skill-item">CI/CD</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-section fade-up">
+    <h2>Let's Connect</h2>
+    <p style="color: var(--text-muted); margin-top: 0.5rem;">Open to new opportunities and collaborations</p>
+    <div class="contact-links">
+        <a href="https://github.com/mattique1234" target="_blank" rel="noopener" class="contact-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+        </a>
+        <a href="mailto:your.email@example.com" class="contact-link primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+            Email Me
+        </a>
+        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="contact-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 M Attique Awan. Built with passion.</p>
+</footer>
+
+<script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Filter tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const filter = tab.dataset.filter;
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = '';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
