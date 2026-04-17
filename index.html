@@ -746,6 +746,297 @@
             .featured-card { padding: 1.25rem; }
         }
 
+        /* Clickable Cards */
+        .project-card {
+            cursor: pointer;
+        }
+
+        .project-card .live-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.625rem;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 100px;
+            font-size: 0.65rem;
+            color: #22c55e;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-card .live-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        /* Project Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-overlay.open .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 2;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-hero {
+            padding: 2.5rem 2rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
+            border-radius: 24px 24px 0 0;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .modal-icon-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 26px;
+            flex-shrink: 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+        }
+
+        .modal-icon-emoji {
+            width: 110px;
+            height: 110px;
+            border-radius: 26px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .modal-title-wrap h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .modal-seller {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 100px;
+            font-size: 0.7rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .modal-status.in-dev {
+            background: rgba(249, 115, 22, 0.15);
+            border-color: rgba(249, 115, 22, 0.4);
+            color: #f97316;
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 0.625rem;
+        }
+
+        .modal-description {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .modal-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .modal-tech-tag {
+            padding: 0.375rem 0.75rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .modal-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.625rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+        }
+
+        .modal-feature svg {
+            flex-shrink: 0;
+            color: #22c55e;
+            margin-top: 0.15rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            flex: 1;
+            justify-content: center;
+            min-width: 200px;
+        }
+
+        .modal-btn-appstore {
+            background: #000;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .modal-btn-appstore:hover {
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-appstore svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .modal-btn-appstore .label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .modal-btn-appstore .label .small {
+            font-size: 0.6rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        @media (max-width: 640px) {
+            .modal-overlay { padding: 1rem; }
+            .modal-hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 2rem 1.25rem 1.25rem;
+            }
+            .modal-icon-img, .modal-icon-emoji {
+                width: 90px;
+                height: 90px;
+                border-radius: 22px;
+            }
+            .modal-icon-emoji { font-size: 2.5rem; }
+            .modal-title-wrap h2 { font-size: 1.35rem; }
+            .modal-body { padding: 1.25rem 1.25rem 1.5rem; }
+            .modal-btn { min-width: 100%; }
+        }
+
         /* Animations */
         .fade-up {
             opacity: 0;
@@ -850,7 +1141,7 @@
     <div class="projects-grid">
 
         <!-- Featured: KhataFlow -->
-        <div class="project-card featured-card fade-up" data-category="fintech">
+        <div class="project-card featured-card fade-up" data-category="fintech" onclick="openProjectModal('khataflow')">
             <div>
                 <div class="featured-badge">Featured Project</div>
                 <div class="project-icon" style="background: rgba(34,197,94,0.15);">
@@ -893,7 +1184,7 @@
         </div>
 
         <!-- Chat Bridge -->
-        <div class="project-card fade-up" data-category="communication">
+        <div class="project-card fade-up" data-category="communication" onclick="openProjectModal('chat-bridge')">
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#128172;</span>
             </div>
@@ -912,7 +1203,7 @@
         </div>
 
         <!-- Oro Remit -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('oro-remit')">
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128176;</span>
             </div>
@@ -931,7 +1222,7 @@
         </div>
 
         <!-- HelloMe Money -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('hellome')">
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#127974;</span>
             </div>
@@ -950,7 +1241,8 @@
         </div>
 
         <!-- Supersonicz -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('supersonicz')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#9889;</span>
             </div>
@@ -969,7 +1261,8 @@
         </div>
 
         <!-- Remit Union -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('remit-union')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127758;</span>
             </div>
@@ -988,7 +1281,8 @@
         </div>
 
         <!-- Top Connect -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('top-connect')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128279;</span>
             </div>
@@ -1007,7 +1301,8 @@
         </div>
 
         <!-- Wiremit -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('wiremit')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#128200;</span>
             </div>
@@ -1026,7 +1321,8 @@
         </div>
 
         <!-- JForex -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('jforex')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#128177;</span>
             </div>
@@ -1045,7 +1341,8 @@
         </div>
 
         <!-- Worthing FX -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('worthing-fx')">
+            <span class="live-badge">Live on App Store</span>
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#128178;</span>
             </div>
@@ -1064,7 +1361,7 @@
         </div>
 
         <!-- AIU Connect -->
-        <div class="project-card fade-up" data-category="communication">
+        <div class="project-card fade-up" data-category="communication" onclick="openProjectModal('aiu-connect')">
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127891;</span>
             </div>
@@ -1083,7 +1380,7 @@
         </div>
 
         <!-- AIU Mobile Campus -->
-        <div class="project-card fade-up" data-category="other">
+        <div class="project-card fade-up" data-category="other" onclick="openProjectModal('aiu-campus')">
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128187;</span>
             </div>
@@ -1102,7 +1399,7 @@
         </div>
 
         <!-- WebRTC DM -->
-        <div class="project-card fade-up" data-category="communication">
+        <div class="project-card fade-up" data-category="communication" onclick="openProjectModal('webrtc-dm')">
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#128249;</span>
             </div>
@@ -1119,7 +1416,7 @@
         </div>
 
         <!-- News App -->
-        <div class="project-card fade-up" data-category="web">
+        <div class="project-card fade-up" data-category="web" onclick="openProjectModal('news-app')">
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#128240;</span>
             </div>
@@ -1137,7 +1434,7 @@
         </div>
 
         <!-- iNotebook -->
-        <div class="project-card fade-up" data-category="web">
+        <div class="project-card fade-up" data-category="web" onclick="openProjectModal('inotebook')">
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#128221;</span>
             </div>
@@ -1154,7 +1451,7 @@
         </div>
 
         <!-- KhyberFx iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('khyberfx')">
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1173,7 +1470,7 @@
         </div>
 
         <!-- Sangerwal iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('sangerwal')">
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1192,7 +1489,7 @@
         </div>
 
         <!-- FGC Money iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('fgc-money')">
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1211,7 +1508,7 @@
         </div>
 
         <!-- TopConnect iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('topconnect-ios')">
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1752,7 +2049,7 @@
         </div>
 
         <!-- CashLedger -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('cashledger')">
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#128181;</span>
             </div>
@@ -1770,7 +2067,7 @@
         </div>
 
         <!-- SwiftUI Appetizers -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('appetizers')">
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127869;</span>
             </div>
@@ -1787,7 +2084,7 @@
         </div>
 
         <!-- SwiftUI BarCode Scanner -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('barcode')">
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128274;</span>
             </div>
@@ -1804,7 +2101,7 @@
         </div>
 
         <!-- SwiftUI Weather App -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('weather')">
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#9925;</span>
             </div>
@@ -1821,7 +2118,7 @@
         </div>
 
         <!-- Apple Frameworks SwiftUI -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('apple-frameworks')">
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#128296;</span>
             </div>
@@ -1838,7 +2135,7 @@
         </div>
 
         <!-- BanglaRemit -->
-        <div class="project-card fade-up" data-category="fintech">
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('banglaremit')">
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#128241;</span>
             </div>
@@ -2055,6 +2352,15 @@
     </div>
 </section>
 
+<!-- Project Modal -->
+<div class="modal-overlay" id="projectModal" onclick="if(event.target===this) closeModal()">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        <div class="modal-hero" id="modalHero"></div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
 <footer>
     <p>&copy; 2026 M Attique Awan. Built with passion.</p>
 </footer>
@@ -2132,6 +2438,407 @@
             const target = document.querySelector(this.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
+
+    // =================== PROJECT MODAL ===================
+    const projectData = {
+        'khataflow': {
+            title: 'KhataFlow',
+            seller: 'Offline Business Management',
+            status: 'Live (Android)',
+            icon: '📚',
+            tech: ['Flutter', 'Riverpod', 'Isar DB', 'PDF Generation', 'Biometric Auth', 'Local Notifications'],
+            description: 'KhataFlow is an offline-first business management and ledger app designed for small business owners to track transactions, manage customer accounts, and generate professional invoices — all without requiring an internet connection.',
+            features: ['Offline-first architecture with Isar local database', 'Biometric authentication and app lock for security', 'PDF invoice generation and direct WhatsApp sharing', 'Scheduled local notifications for payment reminders', 'Riverpod state management with clean architecture', 'Multi-currency and multi-language support']
+        },
+        'remit-home': {
+            title: 'Remit Home',
+            seller: 'INTER CITY MONEY LIMITED',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/89/b1/4a/89b14ad2-6675-2bd8-8270-3b0900921a86/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/remit-home/id1660015373',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Firebase', 'KYC', 'Biometric Auth'],
+            description: 'Fast, Secure, and Hassle-Free International Money Transfers. Remit Home offers transfers as quick as 10 minutes, bank-level encryption, competitive exchange rates, and zero hidden fees — trusted by families sending money across borders.',
+            features: ['Transfers completed in as little as 10 minutes', 'Bank-level encryption for secure transactions', 'Competitive exchange rates with no hidden fees', 'Identity verification with document scanning', 'Biometric login (Face ID / Touch ID)', 'Real-time transaction tracking and notifications']
+        },
+        'remit-choice': {
+            title: 'Remit Choice',
+            seller: 'Remit Choice Ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/0a/09/d70a0929-1c4f-08e3-aa69-4efecd60a01b/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/remit-choice/id1502684794',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Ondato SDK', 'Idensic SDK', 'Firebase'],
+            description: 'Faster, safer and easier way to send money home. Remit Choice offers zero fee transfers and best exchange rates with advanced compliance through Ondato and Idensic identity verification SDKs.',
+            features: ['Zero fee transfers on select corridors', 'Best exchange rates in the market', 'Ondato & Idensic compliance SDKs', 'Advanced KYC/AML workflow', 'Multi-currency support', 'Real-time push notifications']
+        },
+        'wiremit': {
+            title: 'Wiremit Money Transfer',
+            seller: 'WIREMIT LIMITED',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4f/a3/56/4fa35655-1c69-fb86-5e77-fdbb7d3e520c/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/wiremit-money-transfer/id6747074739',
+            tech: ['Flutter', 'BLoC', 'Idenfy SDK', 'Syncfusion Charts', 'Firebase', 'Hive'],
+            description: 'Send money from the UK to Zimbabwe with Wiremit — your trusted money transfer service offering competitive exchange rates, low fees, and secure transfers with real-time tracking and Syncfusion-powered analytics dashboards.',
+            features: ['UK to Zimbabwe corridor specialist', 'Competitive exchange rates and low fees', 'Idenfy SDK for KYC compliance', 'Syncfusion charts for transaction analytics', 'Real-time transaction tracking', 'Secure Firebase backend']
+        },
+        'supersonicz': {
+            title: 'Supersonicz',
+            seller: 'Supersonicz Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/50/22/bc/5022bc8b-b6a3-d599-117e-37aa2a708653/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/supersonicz/id1662878489',
+            tech: ['Flutter', 'Riverpod', 'BLoC', 'iOS (UIKit)', 'Volume SDK', 'Firebase'],
+            description: 'Safe, Secure and Fast to use — Supersonicz is always the best choice to send money around the globe. Built with modern Riverpod architecture, Volume SDK payment integration, and comprehensive identity verification workflows.',
+            features: ['Modern Riverpod state management', 'Volume SDK for payment processing', 'Multi-country corridor support', 'Identity verification with document scanning', 'Real-time exchange rates', 'Push notifications for transaction updates']
+        },
+        'izi-send': {
+            title: 'IZI Send',
+            seller: 'Remit Co Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6e/88/dd/6e88ddb0-976e-7cbb-c85e-d2d4cd7ad710/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/izi-send/id1659635569',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Volume SDK', 'Firebase', 'Tawk.to'],
+            description: 'IZI Send is a money transfer service offering instant transfers via debit card, credit card, or bank transfer with real-time updates and integrated live chat support via Tawk.to.',
+            features: ['Instant transfers via card or bank', 'Volume SDK for payment processing', 'Tawk.to live chat integration', 'Real-time transaction updates', 'Identity verification workflow', 'Multi-currency exchange support']
+        },
+        'kapook': {
+            title: 'Kapook UK Money Transfer',
+            seller: 'Kapook Uk Ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/74/79/51/74795168-8128-8c40-890b-6bc8534c1970/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/kapook-uk-money-transfer/id1140175584',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Idensic SDK', 'Syncfusion Charts', 'Firebase'],
+            description: 'Kapook is a UK-based money transfer company operating since 2009, registered with the Financial Services Authority. Features include checking exchange rates, transferring money, and managing beneficiary accounts.',
+            features: ['FSA-registered since 2009', 'Beneficiary account management', 'Live exchange rate checking', 'Idensic KYC verification', 'Syncfusion analytics dashboards', 'Secure transaction processing']
+        },
+        'jforex': {
+            title: 'J Forex Money Transfer',
+            seller: 'J FOREX & TRADERS PTY LTD',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2b/33/ef/2b33efab-ee15-7169-fc2d-5b1f182f32cb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/j-forex-money-transfer/id1580933514',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Idenfy SDK', 'Google Places API', 'Firebase'],
+            description: 'J Forex Money Transfer offers international transfers with same-day credit into all bank accounts in Pakistan, plus faster cash pickup services. Integrated with Google Places for address autocomplete and Idenfy for compliance.',
+            features: ['Same-day credit to Pakistan bank accounts', 'Faster cash pickup services', 'Google Places address autocomplete', 'Idenfy SDK for KYC compliance', 'Multi-currency exchange', 'Real-time push notifications']
+        },
+        'worthing-fx': {
+            title: 'WorFX Money Transfer',
+            seller: 'WORTHING FX SERVICES LTD',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/a2/97/d4/a297d4d2-bec2-3ffa-55e3-624039f218ec/AppIcon-1x_U007emarketing-0-6-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/worfx-money-transfer/id1588113413',
+            tech: ['Flutter', 'GetX', 'Firebase', 'Geolocator', 'libphonenumber', 'Hive'],
+            description: 'WorFX is an international money transfer service with competitive exchange rates. Simple three-step process: sign up, check rates, and transfer funds to any destination worldwide.',
+            features: ['Three-step transfer process', 'Competitive global exchange rates', 'GetX state management', 'Geolocation services', 'Phone number validation', 'Hive local storage']
+        },
+        'top-connect': {
+            title: 'Top Connect',
+            seller: 'Top Connect Ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d8/21/57/d82157bc-cd2f-fecb-663c-cf19c3e042b1/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/top-connect/id1487637261',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Idensic SDK', 'Apple Pay', 'Google Pay'],
+            description: 'UK-based money transfer service offering fast, affordable transfers globally with emphasis on Ghana corridor, supported by 24/7 customer care and international payment networks.',
+            features: ['UK-based with global reach', 'Ghana corridor specialist', '24/7 customer care support', 'Apple Pay & Google Pay integration', 'Idensic KYC verification', 'Fastpace ID Scan SDK']
+        },
+        'remit-union': {
+            title: 'Remit Union',
+            seller: 'Remit Union Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d9/ce/df/d9cedfac-decf-1c55-2129-fa55588a8b1d/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/remit-union/id1563904588',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Onfido SDK', 'Firebase', 'Story View'],
+            description: 'Transfer anywhere in three easy steps: Sign Up, Check Rates with competitive exchange rates, and Pay Out with beneficiary details. Advanced remittance platform with Onfido identity verification and story-view onboarding.',
+            features: ['Three-step transfer process', 'Onfido SDK for identity verification', 'Story view onboarding experience', 'Contact sync for beneficiaries', 'Competitive exchange rates', 'Beneficiary management']
+        },
+        'hamadan': {
+            title: 'Hamadan Money Transfer',
+            seller: 'Worldwide West 2 East Services Ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/54/47/8b/54478bb3-2b1a-2f9a-e65f-bd60637c178d/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/hamadan-money-transfer/id1665137613',
+            tech: ['Flutter', 'GetX', 'Firebase', 'Dio', 'Hive', 'Form Builder'],
+            description: 'Hamadan Money Transfer lets you transfer money anywhere in three easy steps: Sign Up, Check Rates, Pay Out. Built with GetX state management and robust form validation.',
+            features: ['Three-step transfer process', 'GetX state management', 'Firebase real-time backend', 'Advanced form validation', 'Hive local storage', 'Connectivity handling']
+        },
+        'remit-continental': {
+            title: 'Remit Continental',
+            seller: 'SHIPPERSWORLD LIMITED',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f0/35/fb/f035fb98-e68e-8af4-0c96-34d9399d9e9d/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/remit-continental/id1537981971',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Volume SDK', 'Geolocator', 'Firebase'],
+            description: 'Digital money transfer worldwide to friends and family with competitive exchange rates. FCA-regulated UK service built with clean BLoC architecture and Volume SDK payment integration.',
+            features: ['FCA-regulated service', 'Worldwide coverage', 'Volume SDK integration', 'Geolocation services', 'Clean BLoC architecture', 'Real-time exchange rates']
+        },
+        'hellome': {
+            title: 'HelloMe Money',
+            seller: 'Soft Tech Media',
+            status: 'In Development',
+            icon: '🏦',
+            tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Plaid SDK', 'Firebase', 'Story View'],
+            description: 'HelloMe Money is a personal and business banking app with Plaid integration for bank linking, story-view onboarding, and comprehensive account management for both iOS and Android.',
+            features: ['Plaid SDK for bank linking', 'Story view onboarding', 'Personal & business banking', 'Advanced security features', 'Cross-platform (iOS + Android)', 'Firebase real-time backend']
+        },
+        'chat-bridge': {
+            title: 'Chat Bridge',
+            seller: 'Communication Platform',
+            status: 'In Development',
+            icon: '💬',
+            tech: ['Flutter', 'Firebase', 'WebRTC', 'Speech-to-Text', 'Translation API', 'Provider'],
+            description: 'Real-time messaging platform with voice/video calling via WebRTC, live speech-to-text transcription, and multi-language translation — breaking down language barriers in global conversations.',
+            features: ['Real-time messaging with Firebase', 'WebRTC voice and video calling', 'Live speech-to-text transcription', 'Multi-language translation', 'Text-to-speech playback', 'Provider state management']
+        },
+        'oro-remit': {
+            title: 'Oro Remit',
+            seller: 'Soft Tech Media',
+            status: 'In Development',
+            icon: '💰',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Dio', 'Hive', 'Form Builder'],
+            description: 'Full-featured international remittance platform with BLoC architecture, secure transactions, KYC verification, and real-time exchange rates. Comprehensive fintech solution with webview integration.',
+            features: ['BLoC clean architecture', 'Real-time exchange rates', 'KYC identity verification', 'Secure transaction flows', 'Webview content integration', 'Form builder with validation']
+        },
+        'aiu-connect': {
+            title: 'AIU Connect',
+            seller: 'Allama Iqbal University',
+            status: 'In Development',
+            icon: '🎓',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Google Sign-In', 'Liquid Swipe'],
+            description: 'University campus connection platform with Google SSO, liquid swipe onboarding, chat features, and student identity verification. Connecting students across campus.',
+            features: ['Google Sign-In integration', 'Liquid swipe onboarding', 'Student chat features', 'Identity verification', 'Campus resource access', 'Firebase real-time backend']
+        },
+        'aiu-campus': {
+            title: 'AIU Mobile Campus',
+            seller: 'Allama Iqbal University',
+            status: 'In Development (iOS + Android)',
+            icon: '💻',
+            tech: ['Flutter', 'GetX', 'Firebase', 'Video Player', 'YouTube API', 'Webview'],
+            description: 'Multi-feature university platform with video streaming, YouTube integration, webview content, and campus resource management. Built for both iOS and Android.',
+            features: ['Video streaming and playback', 'YouTube player integration', 'Campus resource webview', 'GetX state management', 'Push notifications', 'Cross-platform deployment']
+        },
+        'webrtc-dm': {
+            title: 'WebRTC Direct Messaging',
+            seller: 'Communication Demo',
+            status: 'Prototype',
+            icon: '📹',
+            tech: ['Flutter', 'WebRTC', 'Firebase'],
+            description: 'Peer-to-peer video calling and direct messaging application built with WebRTC for real-time communication and Firebase for signaling and user management.',
+            features: ['Peer-to-peer video calling', 'WebRTC real-time protocol', 'Firebase signaling server', 'Direct messaging', 'Low-latency connections', 'Cross-platform support']
+        },
+        'news-app': {
+            title: 'News App',
+            seller: 'Web Project',
+            status: 'Personal Project',
+            icon: '📰',
+            tech: ['React', 'Express.js', 'REST API', 'Infinite Scroll'],
+            description: 'React-based news aggregator with infinite scroll, loading indicators, and Express.js backend for API proxying. Clean UI with category filtering.',
+            features: ['Infinite scroll pagination', 'Top loading bar indicator', 'Category-based filtering', 'Express.js backend', 'REST API integration', 'Responsive design']
+        },
+        'inotebook': {
+            title: 'iNotebook',
+            seller: 'Web Project',
+            status: 'Personal Project',
+            icon: '📝',
+            tech: ['React', 'Node.js', 'React Router'],
+            description: 'Full-stack note-taking web application with React frontend, Node.js backend, React Router for navigation, and secure user authentication.',
+            features: ['User authentication', 'CRUD operations for notes', 'React Router navigation', 'Node.js/Express backend', 'Responsive UI', 'Secure API endpoints']
+        },
+        'banglaremit': {
+            title: 'BanglaRemit',
+            seller: 'Native Android',
+            status: 'Production',
+            icon: '📱',
+            tech: ['Android', 'Java/Kotlin', 'Gradle'],
+            description: 'Native Android remittance application for Bangladesh corridor money transfers, built with native Android SDK, Java/Kotlin, and Gradle build system.',
+            features: ['Native Android performance', 'Bangladesh corridor specialist', 'Java/Kotlin codebase', 'Secure payment processing', 'Push notifications', 'Transaction history']
+        },
+        'cashledger': {
+            title: 'CashLedger',
+            seller: 'Personal Finance App',
+            status: 'In Development',
+            icon: '💵',
+            tech: ['Flutter', 'Riverpod', 'Hive', 'Double-Entry Bookkeeping'],
+            description: 'Personal finance and double-entry bookkeeping app with offline-first local storage, Riverpod state management, and clean architecture for tracking expenses and budgets.',
+            features: ['Double-entry bookkeeping', 'Offline-first architecture', 'Riverpod state management', 'Hive local database', 'Expense categorization', 'Budget tracking']
+        },
+        'appetizers': {
+            title: 'Appetizers',
+            seller: 'SwiftUI Project',
+            status: 'Portfolio Project',
+            icon: '🍽',
+            tech: ['SwiftUI', 'Combine', 'REST API'],
+            description: 'SwiftUI restaurant ordering app with menu browsing, item details, cart management, and modern declarative UI patterns using Apple\'s latest frameworks.',
+            features: ['SwiftUI declarative UI', 'Combine reactive framework', 'REST API integration', 'Cart management', 'Item detail views', 'Modern iOS design']
+        },
+        'barcode': {
+            title: 'BarCode Scanner',
+            seller: 'SwiftUI Project',
+            status: 'Portfolio Project',
+            icon: '🔒',
+            tech: ['SwiftUI', 'AVFoundation', 'Camera API'],
+            description: 'SwiftUI barcode and QR code scanning app using AVFoundation camera APIs with real-time code detection and clean native iOS interface.',
+            features: ['Real-time barcode scanning', 'QR code detection', 'AVFoundation camera API', 'SwiftUI interface', 'Multiple barcode format support', 'Clean native iOS design']
+        },
+        'weather': {
+            title: 'Weather App',
+            seller: 'SwiftUI Project',
+            status: 'Portfolio Project',
+            icon: '⛅',
+            tech: ['SwiftUI', 'CoreLocation', 'Weather API'],
+            description: 'SwiftUI weather forecast application with location-based data, dynamic weather icons, hourly forecasts, and clean modern interface.',
+            features: ['Location-based forecasts', 'Dynamic weather icons', 'Hourly and daily forecasts', 'CoreLocation integration', 'Weather API integration', 'Modern SwiftUI UI']
+        },
+        'apple-frameworks': {
+            title: 'Apple Frameworks',
+            seller: 'SwiftUI Project',
+            status: 'Portfolio Project',
+            icon: '🔧',
+            tech: ['SwiftUI', 'LazyVGrid', 'NavigationStack'],
+            description: 'SwiftUI reference app showcasing Apple\'s native frameworks with grid layout, navigation stack, and detail views demonstrating modern iOS patterns.',
+            features: ['LazyVGrid responsive layouts', 'NavigationStack routing', 'Framework documentation', 'Detail views', 'Modern SwiftUI patterns', 'Apple HIG compliance']
+        },
+        // ============ iOS Apps ============
+        'khyberfx': {
+            title: 'KhyberFx (iOS)',
+            seller: 'Native iOS Forex App',
+            status: 'Production',
+            icon: '🍎',
+            tech: ['Swift', 'UIKit', 'Alamofire', 'Firebase', 'Face ID', 'SVProgressHUD'],
+            description: 'Native iOS forex and money transfer app with document scanning for KYC, Face ID authentication, and real-time push notifications via Firebase Messaging.',
+            features: ['Native iOS performance', 'Document scanning for KYC', 'Face ID authentication', 'Background fetch support', 'Remote notifications', 'Alamofire networking']
+        },
+        'sangerwal': {
+            title: 'Sangerwal (iOS)',
+            seller: 'Native iOS Remittance',
+            status: 'Production',
+            icon: '🍎',
+            tech: ['Swift', 'UIKit', 'Firebase Auth', 'Biometric KYC', 'Crashlytics'],
+            description: 'Native iOS remittance app with biometric KYC verification, Storyboard-based UI, Firebase real-time database, and Crashlytics monitoring.',
+            features: ['Biometric KYC verification', 'Storyboard-based UI', 'Firebase real-time database', 'Photo library access', 'Crashlytics monitoring', 'Image animation frameworks']
+        },
+        'fgc-money': {
+            title: 'FGC Money (iOS)',
+            seller: 'Native iOS Money Transfer',
+            status: 'Production',
+            icon: '🍎',
+            tech: ['Swift/Obj-C', 'UIKit', 'Alamofire', 'Firebase', 'Document Scan'],
+            description: 'Native iOS money transfer application with document camera scanning for identity verification, Face ID, and secure transaction flows built with mixed Swift/Objective-C codebase.',
+            features: ['Document camera scanning', 'Face ID authentication', 'Mixed Swift/Obj-C codebase', 'SVProgressHUD loading states', 'SwiftyJSON parsing', 'CocoaPods dependencies']
+        },
+        'topconnect-ios': {
+            title: 'TopConnect ID Scan (iOS)',
+            seller: 'Native iOS ID Verification',
+            status: 'Production',
+            icon: '🍎',
+            tech: ['Swift', 'UIKit', 'ID Scan SDK', 'Firebase', 'Carthage'],
+            description: 'Native iOS identity verification and money transfer app with Fastpace ID scanning SDK, document capture, and secure KYC workflows.',
+            features: ['Fastpace ID Scan SDK', 'Document capture and OCR', 'Secure KYC workflow', 'Carthage + CocoaPods', 'Firebase full suite', 'Remote notifications']
+        }
+    };
+
+    // Open modal
+    function openProjectModal(key) {
+        const data = projectData[key];
+        if (!data) return;
+
+        const modal = document.getElementById('projectModal');
+        const hero = document.getElementById('modalHero');
+        const body = document.getElementById('modalBody');
+
+        const iconHtml = data.iconUrl
+            ? `<img src="${data.iconUrl}" alt="${data.title}" class="modal-icon-img">`
+            : `<div class="modal-icon-emoji">${data.icon || '📱'}</div>`;
+
+        const statusClass = data.status && data.status.toLowerCase().includes('live') ? '' : 'in-dev';
+
+        hero.innerHTML = `
+            ${iconHtml}
+            <div class="modal-title-wrap">
+                <h2>${data.title}</h2>
+                <div class="modal-seller">${data.seller}</div>
+                <span class="modal-status ${statusClass}">
+                    <span style="width:6px;height:6px;border-radius:50%;background:currentColor;"></span>
+                    ${data.status}
+                </span>
+            </div>
+        `;
+
+        const featuresHtml = (data.features || []).map(f => `
+            <div class="modal-feature">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M15 4.5L6.75 12.75 3 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>${f}</span>
+            </div>
+        `).join('');
+
+        const techHtml = (data.tech || []).map(t => `<span class="modal-tech-tag">${t}</span>`).join('');
+
+        const appstoreBtn = data.appstore
+            ? `<a href="${data.appstore}" target="_blank" rel="noopener" class="modal-btn modal-btn-appstore">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                <span class="label"><span class="small">Download on the</span><span>App Store</span></span>
+            </a>`
+            : '';
+
+        body.innerHTML = `
+            <div class="modal-section">
+                <div class="modal-section-title">About</div>
+                <p class="modal-description">${data.description}</p>
+            </div>
+            ${featuresHtml ? `<div class="modal-section">
+                <div class="modal-section-title">Key Features</div>
+                <div class="modal-features">${featuresHtml}</div>
+            </div>` : ''}
+            <div class="modal-section">
+                <div class="modal-section-title">Tech Stack</div>
+                <div class="modal-tech-tags">${techHtml}</div>
+            </div>
+            ${appstoreBtn ? `<div class="modal-actions">${appstoreBtn}</div>` : ''}
+        `;
+
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('projectModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Auto-bind click for cards without onclick (reads from card HTML)
+    document.querySelectorAll('.project-card').forEach(card => {
+        if (!card.getAttribute('onclick')) {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3')?.textContent || 'Project';
+                const description = card.querySelector('.description')?.textContent || '';
+                const category = card.dataset.category || 'other';
+                const tech = Array.from(card.querySelectorAll('.tech-tag')).map(t => t.textContent);
+
+                const dynamicData = {
+                    title: title,
+                    seller: category === 'ios' ? 'Native iOS Application' : 'Mobile Application',
+                    status: category === 'ios' ? 'Production' : 'In Development',
+                    icon: category === 'ios' ? '🍎' : '📱',
+                    tech: tech,
+                    description: description,
+                    features: [
+                        'Secure transaction processing',
+                        'Firebase real-time backend',
+                        'KYC identity verification',
+                        'Push notifications (FCM)',
+                        'Crashlytics monitoring',
+                        'Production-grade architecture'
+                    ]
+                };
+
+                projectData['_dynamic'] = dynamicData;
+                openProjectModal('_dynamic');
+            });
+        }
     });
 </script>
 
