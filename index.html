@@ -924,6 +924,123 @@
             padding: 1.5rem 2rem 2rem;
         }
 
+        /* Screenshots Banner */
+        .modal-screenshots {
+            padding: 0 2rem 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 0.875rem;
+            overflow-x: auto;
+            padding-bottom: 0.75rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--surface-2);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-track {
+            background: var(--surface-2);
+            border-radius: 3px;
+        }
+
+        .screenshots-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .screenshot-item.phone {
+            width: 180px;
+            height: 390px;
+        }
+
+        .screenshot-item.tablet {
+            width: 300px;
+            height: 400px;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(99, 102, 241, 0.4);
+            border-color: var(--accent);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Full-screen screenshot viewer */
+        .screenshot-viewer {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .screenshot-viewer.open {
+            display: flex;
+        }
+
+        .screenshot-viewer img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .screenshot-viewer-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 640px) {
+            .modal-screenshots { padding: 0 1.25rem 0.5rem; }
+            .screenshot-item.phone {
+                width: 150px;
+                height: 325px;
+            }
+            .screenshot-item.tablet {
+                width: 220px;
+                height: 294px;
+            }
+        }
+
         .modal-section {
             margin-bottom: 1.5rem;
         }
@@ -2537,6 +2654,12 @@
     </div>
 </div>
 
+<!-- Screenshot Full-screen Viewer -->
+<div class="screenshot-viewer" id="screenshotViewer" onclick="closeScreenshotViewer()">
+    <button class="screenshot-viewer-close" onclick="closeScreenshotViewer()" aria-label="Close">&times;</button>
+    <img id="screenshotViewerImg" src="" alt="Screenshot full view">
+</div>
+
 <footer>
     <p>&copy; 2026 M Attique Awan. Built with passion.</p>
 </footer>
@@ -2645,7 +2768,15 @@
             appstore: 'https://apps.apple.com/us/app/remit-choice/id1502684794',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Ondato SDK', 'Idensic SDK', 'Firebase'],
             description: 'Faster, safer and easier way to send money home. Remit Choice offers zero fee transfers and best exchange rates with advanced compliance through Ondato and Idensic identity verification SDKs.',
-            features: ['Zero fee transfers on select corridors', 'Best exchange rates in the market', 'Ondato & Idensic compliance SDKs', 'Advanced KYC/AML workflow', 'Multi-currency support', 'Real-time push notifications']
+            features: ['Zero fee transfers on select corridors', 'Best exchange rates in the market', 'Ondato & Idensic compliance SDKs', 'Advanced KYC/AML workflow', 'Multi-currency support', 'Real-time push notifications'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cc/fd/9a/ccfd9a8a-0730-7df7-924b-a99b36c7b372/00ae30e3-1c33-41e1-96fc-c9f9e7d19777_5th.jpg/392x696bb.jpg',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/04/b9/77/04b9774c-b1bf-60bb-888b-96beb26bd4d3/ec058a25-8951-4754-b6b6-9e84345a25d3_1st.jpg/392x696bb.jpg',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f7/21/3c/f7213c34-b2f2-a911-eb6b-1061993453df/538fa3a7-9d6b-480a-b906-5f4637d37871_10th.jpg/392x696bb.jpg',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/51/c3/d4/51c3d4be-a190-791a-a194-2996b2b2f780/df26e66e-29d0-4ce0-8ea2-b7fda3abb070_1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/61/d6/43/61d643db-7d17-fa29-8f64-fc08616cceea/b5fe4686-ae1c-4d5f-a8ab-37a413b87b38_7th.jpg/392x696bb.jpg',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource112/v4/e8/14/d4/e814d42f-a8b8-0174-c253-9a56c9f14a31/3591aa02-dc1c-46e1-a920-adad3c110b30_6th.jpg/392x696bb.jpg'
+            ]
         },
         'wiremit': {
             title: 'Wiremit Money Transfer',
@@ -2665,7 +2796,16 @@
             appstore: 'https://apps.apple.com/us/app/supersonicz/id1662878489',
             tech: ['Flutter', 'Riverpod', 'BLoC', 'iOS (UIKit)', 'Volume SDK', 'Firebase'],
             description: 'Safe, Secure and Fast to use — Supersonicz is always the best choice to send money around the globe. Built with modern Riverpod architecture, Volume SDK payment integration, and comprehensive identity verification workflows.',
-            features: ['Modern Riverpod state management', 'Volume SDK for payment processing', 'Multi-country corridor support', 'Identity verification with document scanning', 'Real-time exchange rates', 'Push notifications for transaction updates']
+            features: ['Modern Riverpod state management', 'Volume SDK for payment processing', 'Multi-country corridor support', 'Identity verification with document scanning', 'Real-time exchange rates', 'Push notifications for transaction updates'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/e6/83/6e/e6836efe-c742-3a67-6783-b8a28c4e3543/f6bfa0b2-e03b-4a4b-b1e4-898216302674_1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/8d/4d/d5/8d4dd59b-5c8f-a0f9-9e25-85d011e1d965/11733a2b-1a52-4695-ba3e-0b8522dfd380_2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/17/9e/da/179eda3e-ed14-e169-6448-32961f5e53c2/5436e4ab-a0fc-47b8-8b79-665ff3eb97e2_3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/cb/df/9b/cbdf9b58-99c1-7814-f757-b44f812c3025/3043c017-cf50-4140-9613-056e35469c8a_4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/82/e1/2a/82e12ae6-1976-daf9-d36a-0533f7382258/07102b8b-c1e2-4f03-aeb8-79d551506f72_5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/5f/27/ed/5f27ed98-38b5-d715-7828-ad2185314384/9d8dcb68-fb6a-402b-88ce-c6e080382e78_6.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/74/7d/eb/747deb00-aa91-3730-744d-49cbcd9d969b/7303c0a0-5f3f-499b-be28-04471f98535f_7.png/392x696bb.png'
+            ]
         },
         'izi-send': {
             title: 'IZI Send',
@@ -2695,7 +2835,15 @@
             appstore: 'https://apps.apple.com/us/app/j-forex-money-transfer/id1580933514',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Idenfy SDK', 'Google Places API', 'Firebase'],
             description: 'J Forex Money Transfer offers international transfers with same-day credit into all bank accounts in Pakistan, plus faster cash pickup services. Integrated with Google Places for address autocomplete and Idenfy for compliance.',
-            features: ['Same-day credit to Pakistan bank accounts', 'Faster cash pickup services', 'Google Places address autocomplete', 'Idenfy SDK for KYC compliance', 'Multi-currency exchange', 'Real-time push notifications']
+            features: ['Same-day credit to Pakistan bank accounts', 'Faster cash pickup services', 'Google Places address autocomplete', 'Idenfy SDK for KYC compliance', 'Multi-currency exchange', 'Real-time push notifications'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e5/34/2e/e5342e13-a746-b8d2-47aa-3ac0e5983699/43e136dd-e2d7-4de5-ad5e-ce2669ba341d_1__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/9e/a9/9a/9ea99a27-52d4-7038-ca72-56cb3a86d228/17225059-e158-4fc2-a2ba-b7393c927626_2__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3d/75/51/3d755152-fb18-2065-c374-68e314f2fbe9/a2ef4b07-5f6a-47db-9759-4021ff791898_3__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4d/05/ca/4d05caa6-e344-d909-3791-382ad427639d/03fc71a3-b6fa-4239-b1c1-c05dc0c075ed_4__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a8/f2/99/a8f29979-40a8-a30a-3d2c-c8fbe2d4f467/2d59fbd0-13c1-431a-8b62-ee4df7ed11e1_5__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1b/4b/28/1b4b28d7-6057-dd5a-9b97-51774ab02d66/ed30fdc6-8793-4d05-b5ec-03703ef92153_6__U00281_U0029.png/392x696bb.png'
+            ]
         },
         'worthing-fx': {
             title: 'WorFX Money Transfer',
@@ -2705,7 +2853,16 @@
             appstore: 'https://apps.apple.com/us/app/worfx-money-transfer/id1588113413',
             tech: ['Flutter', 'GetX', 'Firebase', 'Geolocator', 'libphonenumber', 'Hive'],
             description: 'WorFX is an international money transfer service with competitive exchange rates. Simple three-step process: sign up, check rates, and transfer funds to any destination worldwide.',
-            features: ['Three-step transfer process', 'Competitive global exchange rates', 'GetX state management', 'Geolocation services', 'Phone number validation', 'Hive local storage']
+            features: ['Three-step transfer process', 'Competitive global exchange rates', 'GetX state management', 'Geolocation services', 'Phone number validation', 'Hive local storage'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/7a/3a/14/7a3a14bc-515d-d0ab-d312-216cd91ed115/b5fa1af1-8415-4dfa-9209-2297bda1e5cb_wrothing.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource123/v4/2c/36/31/2c363173-9095-2520-ec18-d1fa769616b8/8af80101-084d-4f88-8e1f-5c28bbe9772a_wrothing-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/6c/72/0a/6c720abd-4e3c-9256-7f1c-59d9c0d61ec7/8b05d9a7-c591-4a3b-b891-9ca78bce49d9_wrothing-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource123/v4/e6/64/9d/e6649dd9-7430-c892-4cc5-a8ad91d5c104/5ea3b7a4-d2ed-44dc-bbb8-5c2bec3a4a6a_wrothing-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource123/v4/a1/29/4e/a1294e5c-0162-7a34-d69a-bf30b053bca5/fbe02d81-ca76-48a7-9dd6-bc821fb4d9e6_wrothing-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/c0/13/95/c0139597-a874-8200-c94f-8184ee8138ec/b6e2d570-69b6-4efe-ab02-3ca7745a69f4_wrothing-5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/7b/8f/8e/7b8f8e70-b564-e751-3065-719fb3a39a35/e0a3bbee-3524-4968-ba3c-de4bb00e2884_wrothing-6.png/392x696bb.png'
+            ]
         },
         'top-connect': {
             title: 'Top Connect',
@@ -2715,7 +2872,16 @@
             appstore: 'https://apps.apple.com/us/app/top-connect/id1487637261',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Idensic SDK', 'Apple Pay', 'Google Pay'],
             description: 'UK-based money transfer service offering fast, affordable transfers globally with emphasis on Ghana corridor, supported by 24/7 customer care and international payment networks.',
-            features: ['UK-based with global reach', 'Ghana corridor specialist', '24/7 customer care support', 'Apple Pay & Google Pay integration', 'Idensic KYC verification', 'Fastpace ID Scan SDK']
+            features: ['UK-based with global reach', 'Ghana corridor specialist', '24/7 customer care support', 'Apple Pay & Google Pay integration', 'Idensic KYC verification', 'Fastpace ID Scan SDK'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/52/52/de/5252de02-a237-d0e0-9cd7-373748959ab8/c88c18c2-b0fd-42b9-9bf1-a0f6e36c9d33_1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/52/c1/db/52c1db1d-dbfe-f241-3405-ee3f4603fef6/5b37f1aa-bd73-430a-a11c-a68d76fc89fa_2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/94/f6/24/94f62470-5d38-ab86-3407-26fa03b7194e/f4daf8b1-c724-47b6-865b-6194035f534d_3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/3e/ec/f2/3eecf2bd-47a1-c665-82b2-cf5fef30f3bf/194a274f-1145-4a7b-a702-d9ddaf2d4db6_4__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/f5/4c/5f/f54c5fd9-3737-094a-82ae-46b61b79e288/6044bb23-d759-4348-b177-3aa8060d0d57_5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/92/1d/87/921d87f0-9ad8-6d9d-30c6-9d23258fc9f4/c91d0e76-93be-4000-b07d-9b47608120a1_6.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/ff/28/ee/ff28ee9b-6bfb-70ed-5bb8-a9b96fd60168/ff30c7a9-8942-47de-ac4f-7d3e2228a1a1_7__U00281_U0029.png/392x696bb.png'
+            ]
         },
         'remit-union': {
             title: 'Remit Union',
@@ -2725,7 +2891,15 @@
             appstore: 'https://apps.apple.com/us/app/remit-union/id1563904588',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Onfido SDK', 'Firebase', 'Story View'],
             description: 'Transfer anywhere in three easy steps: Sign Up, Check Rates with competitive exchange rates, and Pay Out with beneficiary details. Advanced remittance platform with Onfido identity verification and story-view onboarding.',
-            features: ['Three-step transfer process', 'Onfido SDK for identity verification', 'Story view onboarding experience', 'Contact sync for beneficiaries', 'Competitive exchange rates', 'Beneficiary management']
+            features: ['Three-step transfer process', 'Onfido SDK for identity verification', 'Story view onboarding experience', 'Contact sync for beneficiaries', 'Competitive exchange rates', 'Beneficiary management'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c4/20/62/c42062fe-1cab-d26f-f30d-5039402f2873/737f8581-3612-4e63-8b32-df5aa4fd2f79_Remit-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/1c/b2/8f/1cb28f9d-19c0-f07c-5a2a-1ce5dacaa9a3/46f33c87-e228-4d6e-aa1b-97806588842b_Remit-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cb/fc/40/cbfc406e-98d7-cf8c-4ba2-6f6f9f0cf89d/484f0f1f-35d7-403f-a07f-2a0b505ba5ea_Remit-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e6/6d/e6/e66de659-7741-6484-6b80-84d85220e993/f489464c-6e9f-436b-ab50-6732c0dd69ed_Remit-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e0/c1/6f/e0c16fba-3d9b-4cb7-ddaf-089d1e99e2db/a39a4e85-bec7-4a07-972f-32349ed4aab2_Remit-5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/96/12/11/9612112b-944f-dcea-0df0-0ae6f19322c1/572bc7d1-664c-4f2c-850c-51c1c57c6028_Remit-6.png/392x696bb.png'
+            ]
         },
         'hamadan': {
             title: 'Hamadan Money Transfer',
@@ -2735,7 +2909,14 @@
             appstore: 'https://apps.apple.com/us/app/hamadan-money-transfer/id1665137613',
             tech: ['Flutter', 'GetX', 'Firebase', 'Dio', 'Hive', 'Form Builder'],
             description: 'Hamadan Money Transfer lets you transfer money anywhere in three easy steps: Sign Up, Check Rates, Pay Out. Built with GetX state management and robust form validation.',
-            features: ['Three-step transfer process', 'GetX state management', 'Firebase real-time backend', 'Advanced form validation', 'Hive local storage', 'Connectivity handling']
+            features: ['Three-step transfer process', 'GetX state management', 'Firebase real-time backend', 'Advanced form validation', 'Hive local storage', 'Connectivity handling'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/8c/19/ca/8c19ca0c-4ae5-5dea-c7d1-c4e2abf8185c/77d6f4e5-c2ab-438c-8e10-7fd0b14628f5_hamdan-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/e4/35/fc/e435fcb3-5a40-6c41-a9a2-09541f5c8598/c2c8b9fb-78e0-4b06-ba54-09b04749c5fe_hamdan-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource113/v4/d0/08/f0/d008f00f-0d9e-bd92-0ee1-5872bc56e3d8/1f98f1b5-8cbe-4baa-b804-4e85e2ad7d29_hamdan-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource123/v4/b8/e5/df/b8e5dfa3-3c70-e212-c1f9-38b1492b42a4/c1416ee9-df9c-4dfd-a3fd-87798c6bdb4b_hamdan-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource123/v4/f2/be/34/f2be34f6-37f3-e625-3efb-3d49679ecbb9/f8ec7c7f-4693-4068-a16b-db93dbd04cbb_hamdan-5.png/392x696bb.png'
+            ]
         },
         'remit-continental': {
             title: 'Remit Continental',
@@ -2745,7 +2926,14 @@
             appstore: 'https://apps.apple.com/us/app/remit-continental/id1537981971',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Volume SDK', 'Geolocator', 'Firebase'],
             description: 'Digital money transfer worldwide to friends and family with competitive exchange rates. FCA-regulated UK service built with clean BLoC architecture and Volume SDK payment integration.',
-            features: ['FCA-regulated service', 'Worldwide coverage', 'Volume SDK integration', 'Geolocation services', 'Clean BLoC architecture', 'Real-time exchange rates']
+            features: ['FCA-regulated service', 'Worldwide coverage', 'Volume SDK integration', 'Geolocation services', 'Clean BLoC architecture', 'Real-time exchange rates'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ea/6a/05/ea6a05a3-f443-d2f0-43d3-c8c98731444e/baac79e1-8aec-44a8-9c3c-aaf1eca72bb5_1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bc/55/21/bc552140-cbd5-450c-9f24-68ff2d5840fe/a5ecd92d-389b-41f9-9421-a7c4a3cf3263_2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/97/c0/a9/97c0a955-0373-2d4a-0f66-b561f223e273/7ed4d882-3d56-49d6-9517-f5778e86d907_3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/49/56/a8/4956a87d-b76f-c669-f4a4-5a76f1b57602/ad97a525-5cd4-446d-bd48-5a150192d2e9_4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/53/7c/7b/537c7b6d-c1a9-3cab-7039-bcb62e380cf1/8fc0855c-ba84-430b-bba6-41d0f7b92991_5.png/392x696bb.png'
+            ]
         },
         'hellome': {
             title: 'HelloMe Money',
@@ -2755,7 +2943,19 @@
             appstore: 'https://apps.apple.com/gb/app/hellome-money/id1509280830',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Plaid SDK', 'Firebase', 'Story View'],
             description: 'HelloMe Money is a financial platform enabling cross-border money management for individuals and businesses. Features multi-currency accounts, international transfers, bill payments, business account setup, and payment reception in multiple currencies with competitive exchange rates and local account details.',
-            features: ['Multi-currency accounts', 'Cross-border money management', 'International transfers', 'Bill payments', 'Business account setup', 'Multi-currency payment reception', 'Identity verification & data security']
+            features: ['Multi-currency accounts', 'Cross-border money management', 'International transfers', 'Bill payments', 'Business account setup', 'Multi-currency payment reception', 'Identity verification & data security'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a0/17/5d/a0175d70-e213-dedb-237c-fe2f4e765408/e0dd2ace-f234-48a4-8d65-1d2351b1d60d_hellome-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/eb/8a/6d/eb8a6d6b-2b14-3759-4c55-1a11910bd6ff/fe39e969-2fe1-4d8c-8e18-7db667fd9480_hellome-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c5/d3/98/c5d39848-ae80-5510-9ae5-1c5a85506efd/1f52e94c-d4ab-4598-9b51-9c0bb2380eae_hellome-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a4/16/05/a4160563-e3e2-650e-d7c7-e825c9883f92/6bb08ea7-d030-43bd-ae7b-ac7f0f438652_hellome-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/39/b3/0b/39b30bd2-430a-98fa-6b98-d8ba66459620/1faab80f-0636-44ab-afad-706a11150467_hellome-8.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5b/c9/f7/5bc9f752-8fe1-0f34-1ac7-c796d5c0b5b1/c88a8f3c-bb50-4d7a-b8fd-1aa76cdc5530_hellome-5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/46/49/2c/46492c21-fb62-fde8-1212-294d132da8d8/1854a841-52c6-4770-bd52-6987306591d1_hellome-6.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/11/a1/5f/11a15fa2-dc5b-4ea5-149d-652f5ae273e3/7c860a12-2bda-4c41-9f08-e1e286cf254b_hellome-7.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/83/e3/3c/83e33c24-88bd-e006-716a-6cd3f1265ec7/8e7728aa-ea46-4ce1-8401-980754b1ada2_hellome-10.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ab/5d/09/ab5d094d-150b-0d88-fbac-75bf74a32b1a/28cbe735-70a0-4b60-ad79-5792bccf0d48_hellome-9.png/392x696bb.png'
+            ]
         },
         'chat-bridge': {
             title: 'Chat Bridge',
@@ -2784,7 +2984,12 @@
             appstore: 'https://apps.apple.com/us/app/bakhter-money-transfer/id1114820580',
             tech: ['Swift', 'UIKit', 'Firebase', 'Alamofire', 'Crashlytics'],
             description: 'Transfer funds internationally without time constraints or location barriers. Bakhter Money Transfer emphasizes convenient home-based transactions, completion within 15 minutes, step-by-step guidance, and layered security protocols with competitive exchange rates monitored regularly.',
-            features: ['Transfers complete within 15 minutes', 'Layered security protocols', 'Competitive exchange rates', 'Bank deposits and alternative delivery', 'Step-by-step user guidance', 'Transparent fee structure']
+            features: ['Transfers complete within 15 minutes', 'Layered security protocols', 'Competitive exchange rates', 'Bank deposits and alternative delivery', 'Step-by-step user guidance', 'Transparent fee structure'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource112/v4/91/b5/ac/91b5ac9b-4a55-f0be-aa8c-2a6c219633d0/d7dc0273-e654-4299-a6b3-78c3727ed4a6_Iphone_5.5_2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource122/v4/fd/c7/ef/fdc7ef35-ce88-65b7-a719-cc917861c326/96ed9bf5-2d33-4946-af36-a85d64fda29d_Iphone_5.5_3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource122/v4/c0/72/c7/c072c747-5c50-88e5-f2a2-1ccfbdfd1bb0/2dd93529-71e0-4415-b2c7-4bbb296e88ae_Iphone_5.5_5.png/392x696bb.png'
+            ]
         },
         'nec-money': {
             title: 'NEC Money',
@@ -2794,7 +2999,15 @@
             appstore: 'https://apps.apple.com/us/app/nec-money/id1476959641',
             tech: ['Flutter', 'GetX', 'Firebase', 'Geolocator', 'Hive', 'Form Builder'],
             description: 'NEC Money enables cash to be transferred from one part of the world to another instantly, with access to over 100,000 agent locations across 90 countries. Multiple delivery methods including cash transfer, bank account, mobile money, and door delivery options.',
-            features: ['100,000+ agent locations across 90 countries', 'Unique 15-digit SPIN identifier', 'Multiple delivery methods', '24/7 customer support', 'Real-time transaction tracking', 'Door delivery option']
+            features: ['100,000+ agent locations across 90 countries', 'Unique 15-digit SPIN identifier', 'Multiple delivery methods', '24/7 customer support', 'Real-time transaction tracking', 'Door delivery option'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0a/f0/b4/0af0b40e-ce53-34fd-652e-2ee20528157e/Simulator_Screenshot_-_iPad_Pro_U002812.9-inch_U0029_U00282nd_generation_U0029_-_2025-05-20_at_14.06.17.png/576x768bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/be/35/90/be359021-4002-84de-65d0-b05e3097c1cd/Simulator_Screenshot_-_iPad_Pro_U002812.9-inch_U0029_U00282nd_generation_U0029_-_2025-05-20_at_14.53.04.png/576x768bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/74/fc/1d/74fc1d48-fa12-0fe0-5ed2-da5ec9ff8930/Simulator_Screenshot_-_iPad_Pro_U002812.9-inch_U0029_U00282nd_generation_U0029_-_2025-05-20_at_14.54.30.png/576x768bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ac/e3/cd/ace3cd80-cc58-8ad8-ade6-bb35109f9be9/Simulator_Screenshot_-_iPad_Pro_U002812.9-inch_U0029_U00282nd_generation_U0029_-_2025-05-20_at_14.54.38.png/576x768bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/76/62/ae/7662ae64-99d5-5c3b-2df3-2becc94840a7/Simulator_Screenshot_-_iPad_Pro_U002812.9-inch_U0029_U00282nd_generation_U0029_-_2025-05-20_at_14.53.14.png/576x768bb.png'
+            ],
+            tabletScreenshots: true
         },
         'sunnah-money': {
             title: 'Sunnah Money Transfer',
@@ -2814,7 +3027,13 @@
             appstore: 'https://apps.apple.com/us/app/sos-remit/id1610316706',
             tech: ['Flutter', 'BLoC', 'Firebase', 'Alamofire', 'Hive'],
             description: 'Secure and fast online money transfer service around the world. SOS Remit operates from Luton with experienced professionals, offering competitive rates and low fees. Send money to thousands of locations worldwide for cash pickup or bank deposits.',
-            features: ['Luton-based UK service', 'Thousands of payout locations globally', 'Cash pickup or bank deposits', 'Competitive rates and low fees', 'Experienced professional support', 'Express transfer options']
+            features: ['Luton-based UK service', 'Thousands of payout locations globally', 'Cash pickup or bank deposits', 'Competitive rates and low fees', 'Experienced professional support', 'Express transfer options'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/f4/64/b2/f464b2d6-4313-82eb-c908-6f1370d1b1cf/57b28b66-11d3-4395-aa1d-3a164e84fdd7_sos-remit.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/12/96/0a/12960a74-bd65-00d2-8065-f48168c7fa73/3f3f9612-cff8-4647-aa20-c067a3b4e05c_sos-remit-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/3d/96/29/3d9629eb-11df-fb69-09db-6ea1b1b6eb15/36d6e487-6db5-4b1f-96b7-fad72d8fe9dd_sos-remit-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/d8/56/e8/d856e861-0902-e213-bde4-1d4f2b2108d7/2412c178-5ca6-464f-bac4-0c7903a6f72d_sos-remit-3__U00281_U0029.png/392x696bb.png'
+            ]
         },
         'kmb-money': {
             title: 'KMB Money',
@@ -2824,7 +3043,10 @@
             appstore: 'https://apps.apple.com/us/app/kmb-money/id6479642597',
             tech: ['Flutter', 'BLoC', 'Firebase', 'Freezed', 'Local Auth', 'Form Builder'],
             description: 'Send money home quick, low fees, good exchange rate and secure. Accessible platform for transferring funds to loved ones via computer, smartphone, or tablet. Recipients can receive as bank deposits or cash pickups with service to Bangladesh and India.',
-            features: ['Bangladesh and India corridors', 'Quick transfers with low fees', 'Good exchange rates', 'Cross-device accessibility', 'Bank deposits or cash pickup', 'Freezed code generation']
+            features: ['Bangladesh and India corridors', 'Quick transfers with low fees', 'Good exchange rates', 'Cross-device accessibility', 'Bank deposits or cash pickup', 'Freezed code generation'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cd/a1/9d/cda19dc3-ba90-238d-ee33-7dff5596ea18/31d79d56-0774-4b82-bd52-deee9f517451_5.5-inch_Screenshot_1.png/392x696bb.png'
+            ]
         },
         'zak-money': {
             title: 'Zak Money Exchange',
@@ -2834,7 +3056,15 @@
             appstore: 'https://apps.apple.com/us/app/zak-money-exchange/id6526478858',
             tech: ['Flutter', 'BLoC', 'Volume SDK', 'Firebase', 'Hive', 'Form Builder'],
             description: 'Trusted international money transfer platform operating since 2003. Send funds globally to bank accounts, mobile wallets, and cash pickup locations with fast, safer and reliable service. Competitive exchange rates with minimal transfer fees.',
-            features: ['Operating since 2003', 'Global transfers to multiple destinations', 'Bank, mobile wallet, cash pickup', 'Multilingual customer support', 'Volume SDK payment integration', 'Minimal transfer fees']
+            features: ['Operating since 2003', 'Global transfers to multiple destinations', 'Bank, mobile wallet, cash pickup', 'Multilingual customer support', 'Volume SDK payment integration', 'Minimal transfer fees'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d3/22/7c/d3227c69-590e-e520-1912-013635795192/8fa11906-f529-4d34-94b1-2c3f49838201_zak-money__U00281_U0029.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3f/73/20/3f73201f-922f-7644-9076-cce6e4798de0/e08610c7-6ef9-4ce5-abf0-b30257c68075_zak-money-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d5/a7/0e/d5a70e7d-ff6c-b80f-686b-168472861cbf/ee847d3c-fa0f-4413-b668-1d7646b0b28d_zak-money-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/69/ad/69/69ad6920-708b-c1c1-e8d0-6c793033612f/3dced610-02a1-4e79-8c32-e0ad4ac7e619_zak-money-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3b/05/2a/3b052a54-780a-3f74-2832-d4fc41d399ea/d221e2c9-75bd-4262-bf50-ec3bb2254ca7_zak-money-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bb/10/af/bb10afa8-ab87-1a93-9347-986ef13e6a72/a5dc0eb7-7f3c-41c4-aaab-825be43b5ee3_zak-money-5.png/392x696bb.png'
+            ]
         },
         'aiu-connect': {
             title: 'AIU Connect',
@@ -2854,7 +3084,15 @@
             appstore: 'https://apps.apple.com/us/app/aiu-mobile-campus/id1145761562',
             tech: ['Flutter', 'GetX', 'Firebase', 'Video Player', 'YouTube API', 'Webview'],
             description: 'Official virtual campus app for Atlantic International University. Students can access webinars, video conferences, online courses, a digital library with 240,000+ titles, submit assignments, message tutors, view transcripts, and manage payments — all from one place.',
-            features: ['Webinars & video conferences', 'Digital library with 240,000+ titles', 'Online course access', 'Assignment submission', 'Tutor messaging & networking', 'Transcript viewing & payment management', 'YouTube player integration']
+            features: ['Webinars & video conferences', 'Digital library with 240,000+ titles', 'Online course access', 'Assignment submission', 'Tutor messaging & networking', 'Transcript viewing & payment management', 'YouTube player integration'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/44/e9/bf/44e9bfa3-d95d-14c5-7842-66e5702a859e/87ee848f-2a2d-41ad-9499-14ae75b0a49c_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.35.26.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7d/02/6d/7d026dcd-ad4e-499b-ea5b-e46c0b6b7aa1/2656c68e-1d3b-473a-88ba-414dd20c75c8_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.35.36.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/44/6f/ae/446faed2-3410-86b8-3806-1935e4ffc2df/7dcc1800-56c8-4644-b677-f33a5f964770_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.36.35.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/6d/6b/2f/6d6b2f80-8ded-cdfd-173c-1c7e76c4262f/4a643396-fff6-467f-8ab2-6bd5ab7e9f1d_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.36.58.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/39/5e/1e/395e1e5a-5ec2-1a25-75be-a12b7d8a17f3/486341e5-13b6-4f18-a72a-f453029ca49b_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.37.50.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/db/39/32/db3932f0-9fcf-3150-e35f-948aefb25c50/87db1130-a65c-4415-b39e-d25e62f66d9d_Simulator_Screenshot_-_iPhone_8_Plus_-_2024-05-13_at_12.37.21.png/392x696bb.png'
+            ]
         },
         'dollar-east': {
             title: 'Dollar East Money Transfer',
@@ -2874,7 +3112,17 @@
             appstore: 'https://apps.apple.com/us/app/hb-money-transfer/id1587112522',
             tech: ['Flutter', 'BLoC', 'Firebase', 'Alamofire', 'CocoaPods', 'Crashlytics'],
             description: 'HB Money Transfer (Hafiz Brothers) is a remittance platform enabling users to send money worldwide to loved ones with favorable exchange rates. Supports debit cards, credit cards, and bank transfers with real-time updates, instant cash pickups, and bank deposits.',
-            features: ['Worldwide money transfers', 'Favorable exchange rates', 'Multiple payment methods (card, bank)', 'Real-time transfer updates', 'Instant cash pickup options', 'Bank deposits', 'Built-in rate calculator']
+            features: ['Worldwide money transfers', 'Favorable exchange rates', 'Multiple payment methods (card, bank)', 'Real-time transfer updates', 'Instant cash pickup options', 'Bank deposits', 'Built-in rate calculator'],
+            screenshots: [
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/ca/09/77/ca097757-cdf4-9034-b5cf-8527675893a6/ebcc3468-5507-4b7c-827a-bb028023022e_hb-1.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/be/15/ad/be15adbc-b99f-bc66-1915-ea2a16379107/d9752e98-8d4f-46b3-baf6-42e1f1e6edc5_hb-2.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/61/1a/84/611a8468-ac7c-2111-8782-37cf8cfeb73b/81423af8-d4db-4167-872a-1b23a4a0e10e_hb-3.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/e7/b7/14/e7b714cf-4454-a0ef-58c3-360e5cb8ac58/f09299be-9847-4f8c-85c6-6ef97a3a1917_hb-4.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/b1/15/d8/b115d817-d785-e4d7-6b64-a56a0ea980fd/d34cdf84-bcea-45bd-875e-337a4073be13_hb-5.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/bf/69/61/bf6961ad-4a9c-a103-e424-59fbd817c06a/b74dc304-e6db-465d-a71c-9c159f24f682_hb-6.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/36/19/42/36194228-eda1-0ee1-f845-92dafb2126d1/c1e65fd8-2925-40c6-81e8-2fa15087005e_hb-7.png/392x696bb.png',
+                'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/d6/aa/67/d6aa6757-5cec-562c-3576-fd0db6b31814/7b76170b-ba4f-45b5-9c2d-f6d537f11fb9_hb-8.png/392x696bb.png'
+            ]
         },
         'webrtc-dm': {
             title: 'WebRTC Direct Messaging',
@@ -3046,7 +3294,22 @@
             </a>`
             : '';
 
+        const screenshotClass = data.tabletScreenshots ? 'tablet' : 'phone';
+        const screenshotsHtml = (data.screenshots && data.screenshots.length)
+            ? `<div class="screenshots-scroll">
+                ${data.screenshots.map(url => `
+                    <div class="screenshot-item ${screenshotClass}" onclick="openScreenshotViewer('${url.replace('392x696bb', '750x1334bb').replace('576x768bb', '1200x1600bb')}')">
+                        <img src="${url}" alt="App screenshot" loading="lazy">
+                    </div>
+                `).join('')}
+            </div>`
+            : '';
+
         body.innerHTML = `
+            ${screenshotsHtml ? `<div class="modal-section">
+                <div class="modal-section-title">Screenshots</div>
+                ${screenshotsHtml}
+            </div>` : ''}
             <div class="modal-section">
                 <div class="modal-section-title">About</div>
                 <p class="modal-description">${data.description}</p>
@@ -3071,9 +3334,27 @@
         document.body.style.overflow = '';
     }
 
+    // Screenshot viewer
+    function openScreenshotViewer(url) {
+        event.stopPropagation();
+        const viewer = document.getElementById('screenshotViewer');
+        document.getElementById('screenshotViewerImg').src = url;
+        viewer.classList.add('open');
+    }
+
+    function closeScreenshotViewer() {
+        document.getElementById('screenshotViewer').classList.remove('open');
+    }
+
     // Close on ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+            if (document.getElementById('screenshotViewer').classList.contains('open')) {
+                closeScreenshotViewer();
+            } else {
+                closeModal();
+            }
+        }
     });
 
     // Auto-replace emoji icons with real App Store icons for cards with store listings
