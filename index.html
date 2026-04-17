@@ -379,14 +379,29 @@
         }
 
         .project-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-icon img {
+            transform: scale(1.05);
         }
 
         .project-card h3 {
@@ -1204,6 +1219,7 @@
 
         <!-- Oro Remit -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('oro-remit')">
+
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128176;</span>
             </div>
@@ -1223,6 +1239,7 @@
 
         <!-- HelloMe Money -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('hellome')">
+
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#127974;</span>
             </div>
@@ -1242,7 +1259,7 @@
 
         <!-- Supersonicz -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('supersonicz')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#9889;</span>
             </div>
@@ -1262,7 +1279,7 @@
 
         <!-- Remit Union -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('remit-union')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127758;</span>
             </div>
@@ -1282,7 +1299,7 @@
 
         <!-- Top Connect -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('top-connect')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128279;</span>
             </div>
@@ -1302,7 +1319,7 @@
 
         <!-- Wiremit -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('wiremit')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#128200;</span>
             </div>
@@ -1322,7 +1339,7 @@
 
         <!-- JForex -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('jforex')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(236,72,153,0.15);">
                 <span>&#128177;</span>
             </div>
@@ -1342,7 +1359,7 @@
 
         <!-- Worthing FX -->
         <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('worthing-fx')">
-            <span class="live-badge">Live on App Store</span>
+
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#128178;</span>
             </div>
@@ -1362,6 +1379,7 @@
 
         <!-- AIU Connect -->
         <div class="project-card fade-up" data-category="communication" onclick="openProjectModal('aiu-connect')">
+
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127891;</span>
             </div>
@@ -1381,6 +1399,7 @@
 
         <!-- AIU Mobile Campus -->
         <div class="project-card fade-up" data-category="other" onclick="openProjectModal('aiu-campus')">
+
             <div class="project-icon" style="background: rgba(249,115,22,0.15);">
                 <span>&#128187;</span>
             </div>
@@ -1447,6 +1466,158 @@
             </div>
             <div class="project-meta">
                 <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Web App</span>
+            </div>
+        </div>
+
+        <!-- NEC Money -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('nec-money')">
+
+            <div class="project-icon" style="background: rgba(236,72,153,0.15);">
+                <span>&#128205;</span>
+            </div>
+            <h3>NEC Money</h3>
+            <p class="description">International money transfer to 90 countries with 100,000+ agent locations. Features 24/7 support and real-time tracking with unique SPIN identifier system.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">GetX</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Geolocator</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--pink)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- KMB Money -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('kmb-money')">
+
+            <div class="project-icon" style="background: rgba(99,102,241,0.15);">
+                <span>&#128236;</span>
+            </div>
+            <h3>KMB Money</h3>
+            <p class="description">Quick money transfer to Bangladesh and India with low fees and great exchange rates. Recipients can receive as bank deposits or cash pickups.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Freezed</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Zak Money Exchange -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('zak-money')">
+
+            <div class="project-icon" style="background: rgba(6,182,212,0.15);">
+                <span>&#128184;</span>
+            </div>
+            <h3>Zak Money Exchange</h3>
+            <p class="description">Trusted international money transfer platform operating since 2003. Global transfers to bank accounts, mobile wallets, and cash pickup locations.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Volume SDK</span>
+                <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--cyan)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Hamadan Money Transfer -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('hamadan')">
+
+            <div class="project-icon" style="background: rgba(249,115,22,0.15);">
+                <span>&#128220;</span>
+            </div>
+            <h3>Hamadan Money Transfer</h3>
+            <p class="description">Three-step transfer platform by Worldwide West 2 East Services. Sign up, check rates, and pay out with GetX state management and robust validation.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">GetX</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Dio</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--orange)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Sunnah Money Transfer -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('sunnah-money')">
+
+            <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                <span>&#128176;</span>
+            </div>
+            <h3>Sunnah Money Transfer</h3>
+            <p class="description">Shariah-compliant international money transfer platform with competitive exchange rates, halal financial processing, and reliable security.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Form Builder</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--green)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- SOS Remit -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('sos-remit')">
+
+            <div class="project-icon" style="background: rgba(236,72,153,0.15);">
+                <span>&#128680;</span>
+            </div>
+            <h3>SOS Remit</h3>
+            <p class="description">Luton-based UK service for secure and fast online money transfers. Cash pickup or bank deposits at thousands of locations worldwide.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Hive</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--pink)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Dollar East Money Transfer -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('dollar-east')">
+
+            <div class="project-icon" style="background: rgba(34,197,94,0.15);">
+                <span>&#128178;</span>
+            </div>
+            <h3>Dollar East Money Transfer</h3>
+            <p class="description">International money transfer to 30+ countries with bank-level encryption, competitive exchange rates, and zero hidden charges.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Connectivity Plus</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--green)"></span> Fintech</span>
+            </div>
+        </div>
+
+        <!-- Bakhter Money Transfer (Flutter) -->
+        <div class="project-card fade-up" data-category="fintech" onclick="openProjectModal('bakhter')">
+
+            <div class="project-icon" style="background: rgba(99,102,241,0.15);">
+                <span>&#128177;</span>
+            </div>
+            <h3>Bakhter Money Transfer</h3>
+            <p class="description">International money transfers completed within 15 minutes. Step-by-step guidance with layered security protocols and transparent fees.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Alamofire</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-type"><span class="dot" style="background: var(--accent-light)"></span> Fintech</span>
             </div>
         </div>
 
@@ -1527,7 +1698,8 @@
         </div>
 
         <!-- Bakhter Money Transfer iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('bakhter')">
+
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1851,7 +2023,8 @@
         </div>
 
         <!-- SOS Remit iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('sos-remit')">
+
             <div class="project-icon" style="background: rgba(6,182,212,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1887,7 +2060,8 @@
         </div>
 
         <!-- SunnahMoney iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('sunnah-money')">
+
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -1976,18 +2150,19 @@
             </div>
         </div>
 
-        <!-- Hafiz Brothers iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <!-- HB Money Transfer (Hafiz Brothers) -->
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('hb-money')">
+
             <div class="project-icon" style="background: rgba(34,197,94,0.15);">
                 <span>&#127823;</span>
             </div>
-            <h3>Hafiz Brothers (iOS)</h3>
-            <p class="description">Native iOS money transfer and exchange app with Firebase real-time database, Crashlytics, and secure auth.</p>
+            <h3>HB Money Transfer</h3>
+            <p class="description">Native iOS money transfer app by Hafiz Bros with real-time updates, instant cash pickup, bank deposits, and favorable exchange rates worldwide.</p>
             <div class="tech-tags">
                 <span class="tech-tag">Swift</span>
                 <span class="tech-tag">UIKit</span>
                 <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">Crashlytics</span>
+                <span class="tech-tag">Alamofire</span>
             </div>
             <div class="project-meta">
                 <span class="project-type"><span class="dot" style="background: var(--green)"></span> iOS / Fintech</span>
@@ -2013,7 +2188,8 @@
         </div>
 
         <!-- AIU Mobile Campus iOS -->
-        <div class="project-card fade-up" data-category="ios">
+        <div class="project-card fade-up" data-category="ios" onclick="openProjectModal('aiu-campus')">
+
             <div class="project-icon" style="background: rgba(99,102,241,0.15);">
                 <span>&#127823;</span>
             </div>
@@ -2573,12 +2749,13 @@
         },
         'hellome': {
             title: 'HelloMe Money',
-            seller: 'Soft Tech Media',
-            status: 'In Development',
-            icon: '🏦',
+            seller: 'HelloMe App Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c4/ea/93/c4ea9309-f203-de82-b72b-d3c751b72ccb/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/gb/app/hellome-money/id1509280830',
             tech: ['Flutter', 'BLoC', 'iOS (UIKit)', 'Plaid SDK', 'Firebase', 'Story View'],
-            description: 'HelloMe Money is a personal and business banking app with Plaid integration for bank linking, story-view onboarding, and comprehensive account management for both iOS and Android.',
-            features: ['Plaid SDK for bank linking', 'Story view onboarding', 'Personal & business banking', 'Advanced security features', 'Cross-platform (iOS + Android)', 'Firebase real-time backend']
+            description: 'HelloMe Money is a financial platform enabling cross-border money management for individuals and businesses. Features multi-currency accounts, international transfers, bill payments, business account setup, and payment reception in multiple currencies with competitive exchange rates and local account details.',
+            features: ['Multi-currency accounts', 'Cross-border money management', 'International transfers', 'Bill payments', 'Business account setup', 'Multi-currency payment reception', 'Identity verification & data security']
         },
         'chat-bridge': {
             title: 'Chat Bridge',
@@ -2590,31 +2767,114 @@
             features: ['Real-time messaging with Firebase', 'WebRTC voice and video calling', 'Live speech-to-text transcription', 'Multi-language translation', 'Text-to-speech playback', 'Provider state management']
         },
         'oro-remit': {
-            title: 'Oro Remit',
-            seller: 'Soft Tech Media',
-            status: 'In Development',
-            icon: '💰',
+            title: 'ORO Remit',
+            seller: 'Oro Remit Inc',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/2d/82/222d8294-4dc6-a97a-8d95-e978b3d57a8d/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/oro-remit/id6759285541',
             tech: ['Flutter', 'BLoC', 'Firebase', 'Dio', 'Hive', 'Form Builder'],
-            description: 'Full-featured international remittance platform with BLoC architecture, secure transactions, KYC verification, and real-time exchange rates. Comprehensive fintech solution with webview integration.',
-            features: ['BLoC clean architecture', 'Real-time exchange rates', 'KYC identity verification', 'Secure transaction flows', 'Webview content integration', 'Form builder with validation']
+            description: 'ORO Remit facilitates fast, secure, and cost-effective digital remittance services for international money transfers. Features competitive exchange rates, advanced encryption and fraud protection, operating under strict regulatory standards complying with AML and KYC requirements. Currently enables transfers from Canada to the Philippines with plans for expansion.',
+            features: ['Canada to Philippines corridor', 'AML & KYC compliance', 'Advanced encryption & fraud protection', 'Bank deposits and multiple payout options', 'Competitive exchange rates', 'BLoC clean architecture']
+        },
+        'bakhter': {
+            title: 'Bakhter Money Transfer',
+            seller: 'BAKHTER MONEY TRANSFER LIMITED',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ef/a7/d1/efa7d1b5-e0a0-d914-64d8-45223fdd7d43/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/bakhter-money-transfer/id1114820580',
+            tech: ['Swift', 'UIKit', 'Firebase', 'Alamofire', 'Crashlytics'],
+            description: 'Transfer funds internationally without time constraints or location barriers. Bakhter Money Transfer emphasizes convenient home-based transactions, completion within 15 minutes, step-by-step guidance, and layered security protocols with competitive exchange rates monitored regularly.',
+            features: ['Transfers complete within 15 minutes', 'Layered security protocols', 'Competitive exchange rates', 'Bank deposits and alternative delivery', 'Step-by-step user guidance', 'Transparent fee structure']
+        },
+        'nec-money': {
+            title: 'NEC Money',
+            seller: 'NEC Money Transfer Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8a/bb/f9/8abbf9f9-59e6-bafa-41e8-e746ab8f2888/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/nec-money/id1476959641',
+            tech: ['Flutter', 'GetX', 'Firebase', 'Geolocator', 'Hive', 'Form Builder'],
+            description: 'NEC Money enables cash to be transferred from one part of the world to another instantly, with access to over 100,000 agent locations across 90 countries. Multiple delivery methods including cash transfer, bank account, mobile money, and door delivery options.',
+            features: ['100,000+ agent locations across 90 countries', 'Unique 15-digit SPIN identifier', 'Multiple delivery methods', '24/7 customer support', 'Real-time transaction tracking', 'Door delivery option']
+        },
+        'sunnah-money': {
+            title: 'Sunnah Money Transfer',
+            seller: 'XMG FINANCIAL SERVICES LIMITED',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/94/6b/1c/946b1c46-4196-03f3-eff3-028cee7a2fa6/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/sunnah-money-transfer/id6753592582',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Hive', 'Form Builder', 'Crashlytics'],
+            description: 'Send money home with speed, security, and peace of mind through reliable international transfers at competitive exchange rates. Shariah-compliant money transfer platform.',
+            features: ['Shariah-compliant transactions', 'Competitive exchange rates', 'Reliable international transfers', 'Security-first architecture', 'Halal financial processing', 'Clean BLoC architecture']
+        },
+        'sos-remit': {
+            title: 'SOS Remit',
+            seller: 'Worldwide West 2 East Services Ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple112/v4/f0/c1/11/f0c111c6-5f32-a364-9dc2-2e60ef07f695/AppIcon-0-0-1x_U007emarketing-0-0-0-6-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/sos-remit/id1610316706',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Alamofire', 'Hive'],
+            description: 'Secure and fast online money transfer service around the world. SOS Remit operates from Luton with experienced professionals, offering competitive rates and low fees. Send money to thousands of locations worldwide for cash pickup or bank deposits.',
+            features: ['Luton-based UK service', 'Thousands of payout locations globally', 'Cash pickup or bank deposits', 'Competitive rates and low fees', 'Experienced professional support', 'Express transfer options']
+        },
+        'kmb-money': {
+            title: 'KMB Money',
+            seller: 'KMB international money transfer ltd',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/97/fd/c1/97fdc133-b54f-c24d-5826-df03f738e8f6/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/kmb-money/id6479642597',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Freezed', 'Local Auth', 'Form Builder'],
+            description: 'Send money home quick, low fees, good exchange rate and secure. Accessible platform for transferring funds to loved ones via computer, smartphone, or tablet. Recipients can receive as bank deposits or cash pickups with service to Bangladesh and India.',
+            features: ['Bangladesh and India corridors', 'Quick transfers with low fees', 'Good exchange rates', 'Cross-device accessibility', 'Bank deposits or cash pickup', 'Freezed code generation']
+        },
+        'zak-money': {
+            title: 'Zak Money Exchange',
+            seller: 'Zak Money Exchange Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5a/b3/34/5ab3345e-d458-c010-de79-a5ef0ca598c5/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/zak-money-exchange/id6526478858',
+            tech: ['Flutter', 'BLoC', 'Volume SDK', 'Firebase', 'Hive', 'Form Builder'],
+            description: 'Trusted international money transfer platform operating since 2003. Send funds globally to bank accounts, mobile wallets, and cash pickup locations with fast, safer and reliable service. Competitive exchange rates with minimal transfer fees.',
+            features: ['Operating since 2003', 'Global transfers to multiple destinations', 'Bank, mobile wallet, cash pickup', 'Multilingual customer support', 'Volume SDK payment integration', 'Minimal transfer fees']
         },
         'aiu-connect': {
             title: 'AIU Connect',
-            seller: 'Allama Iqbal University',
-            status: 'In Development',
-            icon: '🎓',
+            seller: 'Atlantic International University',
+            status: 'Live on Play Store',
+            iconUrl: 'https://play-lh.googleusercontent.com/YhdD9f6_XtTlOEtzDmHGBDnhBmkHn_f84KV_5DGJDsJYx2M8CCaKUKxwSx1ggP9LA_Yy-GqFTt2gA5wDIC17CQ=w240-h480',
+            playstore: 'https://play.google.com/store/apps/details?id=com.aiu.connect',
             tech: ['Flutter', 'BLoC', 'Firebase', 'Google Sign-In', 'Liquid Swipe'],
-            description: 'University campus connection platform with Google SSO, liquid swipe onboarding, chat features, and student identity verification. Connecting students across campus.',
-            features: ['Google Sign-In integration', 'Liquid swipe onboarding', 'Student chat features', 'Identity verification', 'Campus resource access', 'Firebase real-time backend']
+            description: 'AIU Connect enables learners to explore education through Atlantic International University\'s Open Initiative — offering non-degree learning experiences where users can study selected courses without upfront tuition. Features AI-powered educational tools and customized learning paths.',
+            features: ['Access non-degree courses', 'Study without upfront fees', 'AI-powered educational tools', 'Customized learning paths', 'Certificates of Completion', 'Flexible self-paced learning', 'Potential credit transfer to degree programs']
         },
         'aiu-campus': {
             title: 'AIU Mobile Campus',
-            seller: 'Allama Iqbal University',
-            status: 'In Development (iOS + Android)',
-            icon: '💻',
+            seller: 'Atlantic International University',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8c/99/98/8c99982b-0967-600d-5c91-b2a119acf61f/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/aiu-mobile-campus/id1145761562',
             tech: ['Flutter', 'GetX', 'Firebase', 'Video Player', 'YouTube API', 'Webview'],
-            description: 'Multi-feature university platform with video streaming, YouTube integration, webview content, and campus resource management. Built for both iOS and Android.',
-            features: ['Video streaming and playback', 'YouTube player integration', 'Campus resource webview', 'GetX state management', 'Push notifications', 'Cross-platform deployment']
+            description: 'Official virtual campus app for Atlantic International University. Students can access webinars, video conferences, online courses, a digital library with 240,000+ titles, submit assignments, message tutors, view transcripts, and manage payments — all from one place.',
+            features: ['Webinars & video conferences', 'Digital library with 240,000+ titles', 'Online course access', 'Assignment submission', 'Tutor messaging & networking', 'Transcript viewing & payment management', 'YouTube player integration']
+        },
+        'dollar-east': {
+            title: 'Dollar East Money Transfer',
+            seller: 'Dollar East Money Transfer Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/eb/2b/ee/eb2beec6-d6d2-c897-8a6a-f40eb260c5d8/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/dollar-east-money-transfer/id6751877024',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Connectivity Plus', 'Hive', 'Form Builder'],
+            description: 'Dollar East Money Transfer provides international money transfer services to 30+ countries with bank-level encryption, competitive exchange rates, and low transfer fees with no hidden charges. Built for family support, bill payments, and business expenses.',
+            features: ['30+ country corridors', 'Bank-level encryption', 'Competitive exchange rates', 'Low fees with no hidden charges', 'Real-time transaction tracking', 'Family support & business expenses']
+        },
+        'hb-money': {
+            title: 'HB Money Transfer',
+            seller: 'Hafiz Bros Travel & Money Transfer Limited',
+            status: 'Live on App Store',
+            iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/11/6c/6f/116c6faa-5a99-e6ad-57b1-8d1a200a247d/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/512x512bb.jpg',
+            appstore: 'https://apps.apple.com/us/app/hb-money-transfer/id1587112522',
+            tech: ['Flutter', 'BLoC', 'Firebase', 'Alamofire', 'CocoaPods', 'Crashlytics'],
+            description: 'HB Money Transfer (Hafiz Brothers) is a remittance platform enabling users to send money worldwide to loved ones with favorable exchange rates. Supports debit cards, credit cards, and bank transfers with real-time updates, instant cash pickups, and bank deposits.',
+            features: ['Worldwide money transfers', 'Favorable exchange rates', 'Multiple payment methods (card, bank)', 'Real-time transfer updates', 'Instant cash pickup options', 'Bank deposits', 'Built-in rate calculator']
         },
         'webrtc-dm': {
             title: 'WebRTC Direct Messaging',
@@ -2779,6 +3039,13 @@
             </a>`
             : '';
 
+        const playstoreBtn = data.playstore
+            ? `<a href="${data.playstore}" target="_blank" rel="noopener" class="modal-btn modal-btn-appstore">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.708 1.568a1 1 0 0 1 0 1.844l-2.719 1.575-2.64-2.587 2.651-2.4zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/></svg>
+                <span class="label"><span class="small">GET IT ON</span><span>Google Play</span></span>
+            </a>`
+            : '';
+
         body.innerHTML = `
             <div class="modal-section">
                 <div class="modal-section-title">About</div>
@@ -2792,7 +3059,7 @@
                 <div class="modal-section-title">Tech Stack</div>
                 <div class="modal-tech-tags">${techHtml}</div>
             </div>
-            ${appstoreBtn ? `<div class="modal-actions">${appstoreBtn}</div>` : ''}
+            ${(appstoreBtn || playstoreBtn) ? `<div class="modal-actions">${appstoreBtn}${playstoreBtn}</div>` : ''}
         `;
 
         modal.classList.add('open');
@@ -2807,6 +3074,24 @@
     // Close on ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
+    });
+
+    // Auto-replace emoji icons with real App Store icons for cards with store listings
+    document.querySelectorAll('.project-card[onclick]').forEach(card => {
+        const onclickAttr = card.getAttribute('onclick');
+        const match = onclickAttr && onclickAttr.match(/openProjectModal\('([^']+)'\)/);
+        if (!match) return;
+
+        const key = match[1];
+        const data = projectData[key];
+        if (!data || !data.iconUrl) return;
+
+        const iconEl = card.querySelector('.project-icon');
+        if (iconEl) {
+            iconEl.innerHTML = `<img src="${data.iconUrl}" alt="${data.title}" loading="lazy">`;
+            iconEl.style.background = 'transparent';
+            iconEl.style.padding = '0';
+        }
     });
 
     // Auto-bind click for cards without onclick (reads from card HTML)
