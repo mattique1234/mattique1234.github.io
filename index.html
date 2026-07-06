@@ -1191,8 +1191,126 @@
             cursor: pointer;
         }
 
+        /* About Me */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+        }
+
+        .about-quote {
+            border-left: 3px solid var(--accent);
+            background: var(--accent-glow);
+            border-radius: 0 12px 12px 0;
+            padding: 1rem 1.25rem;
+            color: var(--text);
+            font-style: italic;
+            margin: 1.5rem 0;
+        }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .about-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .about-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .work-process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .process-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .process-step:hover {
+            border-color: var(--accent);
+        }
+
+        .process-step .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+        }
+
+        .process-step h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .work-process { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
+        }
+
+        @media (max-width: 520px) {
+            .work-process { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1201,6 +1319,7 @@
 <nav>
     <div class="logo">MA</div>
     <ul class="nav-links">
+        <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1230,7 +1349,7 @@
 
         <div class="hero-cta">
             <a href="#projects" class="btn-primary">View My Work</a>
-            <a href="mailto:attiqueawan1122@gmail.com" class="btn-outline">Get In Touch</a>
+            <a href="https://wa.me/923450770898" target="_blank" rel="noopener" class="btn-outline">Get In Touch</a>
         </div>
 
         <div class="hero-stats">
@@ -1250,6 +1369,62 @@
                 <div class="stat-number">20+</div>
                 <div class="stat-label">Flutter Apps</div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="section-header fade-up">
+        <h2>About Me</h2>
+        <p>The developer behind the apps</p>
+    </div>
+    <div class="about-grid fade-up">
+        <div class="about-text">
+            <p>Hi, I'm <strong>Attique Awan</strong> — a senior mobile app developer who has spent the last <strong>8+ years</strong> turning ideas into polished, production-ready apps. I started with native iOS, fell in love with Flutter, and today I ship confidently across <strong>iOS, Android, and the web</strong>.</p>
+            <p>My specialty is <strong>fintech</strong>. I've built and maintained <strong>remittance, banking, and payment apps</strong> used by thousands of people across the UK, Europe, the Middle East, and Asia — apps where a crash isn't an inconvenience, it's someone's money. That's taught me to care deeply about <strong>security, reliability, and clean architecture</strong>: biometric auth, KYC flows, offline-first data, and CI/CD pipelines that make releases boring (in the best way).</p>
+            <div class="about-quote">"I don't just write code — I take products from a rough idea all the way to the App Store, and keep them running long after launch."</div>
+            <p>When I'm not shipping features, I'm reviewing code, mentoring teammates, and keeping up with every new Flutter and SwiftUI release so my clients never fall behind the platform.</p>
+        </div>
+        <div class="about-cards">
+            <div class="about-card">
+                <h4>&#128640; End-to-End Delivery</h4>
+                <p>From architecture and UI to App Store &amp; Play Store release — I own the full lifecycle, including app review, TestFlight betas, and post-launch monitoring with Crashlytics.</p>
+            </div>
+            <div class="about-card">
+                <h4>&#127974; Fintech Domain Expertise</h4>
+                <p>KYC/AML integrations (Onfido, SumSub, Idenfy), Apple Pay &amp; Google Pay, multi-currency exchange, and compliance-heavy flows — I speak the language of regulated products.</p>
+            </div>
+            <div class="about-card">
+                <h4>&#128241; Native + Cross-Platform</h4>
+                <p>Swift/SwiftUI when the product demands native polish, Flutter when speed-to-market matters. I recommend the right stack for your product, not my favorite one.</p>
+            </div>
+            <div class="about-card">
+                <h4>&#129309; Long-Term Partner</h4>
+                <p>Most of my clients work with me for years, not weeks. Clear communication, honest estimates, and no surprises — across time zones from London to Dubai.</p>
+            </div>
+        </div>
+    </div>
+    <div class="work-process fade-up">
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <h4>Discover</h4>
+            <p>Understand your users, goals, and constraints before writing a single line of code.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <h4>Design &amp; Architect</h4>
+            <p>Clean architecture, the right state management, and a UI that feels native on every platform.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <h4>Build &amp; Iterate</h4>
+            <p>Agile sprints with regular builds in your hands via TestFlight and Firebase Distribution.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <h4>Ship &amp; Support</h4>
+            <p>Store releases, crash monitoring, and ongoing improvements long after launch day.</p>
         </div>
     </div>
 </section>
